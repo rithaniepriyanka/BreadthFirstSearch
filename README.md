@@ -27,7 +27,7 @@ End of program.
 ## ROUTE MAP
 #### Example map
 
-![AI-EXP2](https://user-images.githubusercontent.com/75235132/166139638-6bf5670f-2bd3-4b89-b16a-5f8a21b27c95.png)
+![AI-EXP2](https://user-images.githubusercontent.com/75235132/166143654-cfb22c4d-77d9-4f95-9d04-83870e3cc3a8.png)
 
 ## PROGRAM
 ```python
@@ -162,17 +162,29 @@ def multimap(pairs) -> dict:
         result[key].append(val)
     return result
     
-saveetha_nearby_locations = Map(
-    {('SaveethaHospital', 'Chembarambakkam'):  7, ('Chembarambakkam', 'PoonamalleeBridge'): 6, ('PoonamalleeBridge', 'PoonamalleeBusTerminus'): 1, ('PoonamalleeBridge', 'SaveethaDentalCollege'): 3, ('PoonamalleeBusTerminus', 'Kattupakkam'): 2,
-     ('PoonmalleeBusTerminal', 'Mangadu'):4, ('SaveethaDentalCollege', 'Kattupakkam'): 2, ('SaveethaDentalCollege', 'Maduravoyal'):  5, ('Maduravoyal', 'Koyambedu'): 5, ('Koyambedu', 'Vadapalani'): 5, ('Kattupakkam', 'Porur'): 4, 
-     ('Porur', 'Vadapalani'): 8, ('Vadapalani', 'Guindy'):  8, ('Porur', 'Guindy'): 10, ('Mangadu', 'Kundrathur'): 4, ('Kundrathur', 'Porur'): 9, ('Kundrathur', 'Tiruneermalai'): 7, ('Kundrathur', 'Pammal'): 6, ('Pammal', 'Porur'): 10, ('Pammal', 'Guindy'): 14, ('Pammal', 'Airport'): 6, ('Tiruneermalai', 'Balaji college'): 2, ('Balaji college', 'Chrompet'): 2, ('Guindy', 'Velachery'): 4, ('Chrompet', 'Velachery'): 12})
+annanagar_nearby_locations = Map(
+    {('18th main road', 'rv nagar'):  3, ('rv nagar', 'shenoy nagar'): 2,('shenoy nagar', 'chetpet'): 3, 
+     ('shenoy nagar', 'ampa sky walk'): 3, ('ampa sky walk', 'arumbakkam'): 3, ('arumbakkam', 'shanthi colony'): 3,
+    ('shanthi colony', 'thirumangalam'): 4, ('thirumangalam', 'madras mission hospital'): 2, 
+     ('madras mission hospital', '18th main road'): 3, ('ampa sky walk', 'aminjikarai'): 1,
+    ('aminjikarai', 'choolaimedu'): 1, ('choolaimedu', 'saligramam'): 4, ('saligramam', 'koyembedu'): 3,
+    ('koyembedu', 'arumbakkam'): 3, ('koyembedu', 'thirumangalam'): 3, ('thirumangalam', 'mogappair'): 3, 
+    ('mogappair', 'koyembedu'): 4, ('mogappair', 'nolambur'): 2, ('nolambur', 'maduravoyal'): 2,
+    ('maduravoyal', 'vanagaram'): 2, ('saligramam', 'vadapalani'): 2, ('vadapalani', 'kk nagar'): 2,
+    ('kk nagar', 'srm institute'): 3, ('vadapalani', 'ashok pillar'): 2})
 
 
-r0 = RouteProblem('Maduravoyal', 'Velachery', map=saveetha_nearby_locations)
-r1 = RouteProblem('Chembarambakkam', 'Guindy', map=saveetha_nearby_locations)
-r2 = RouteProblem('PoonamalleeBridge', 'Kundrathur', map=saveetha_nearby_locations)
-r3 = RouteProblem('SaveethaHospital', 'Kattupakkam', map=saveetha_nearby_locations)
-r4 = RouteProblem('Mangadu', 'Guindy', map=saveetha_nearby_locations)
+r0 = RouteProblem('18th main road', 'arumbakkam', map=annanagar_nearby_locations)
+r1 = RouteProblem('ashok pillar', 'mogappair', map=annanagar_nearby_locations)
+r2 = RouteProblem('ampa sky walk', 'kk nagar', map=annanagar_nearby_locations)
+r3 = RouteProblem('rv nagar', 'saligramam', map=annanagar_nearby_locations)
+r4 = RouteProblem('thirumangalam', 'choolaimedu', map=annanagar_nearby_locations)
+
+print(r0)
+print(r1)
+print(r2)
+print(r3)
+print(r4)
 
 goal_state_path=breadth_first_search(r4)
 path_states(goal_state_path) 
@@ -183,7 +195,7 @@ print("Total Distance={0} Kilometers".format(goal_state_path.path_cost))
 
 ## OUTPUT:
 
-![AI-EXP2-B](https://user-images.githubusercontent.com/75235132/166139628-64936d93-f293-4dd8-a965-0cf79d5b92aa.png)
+![AI-EXP2-B](https://user-images.githubusercontent.com/75235132/166143669-02291ceb-900b-4647-98ec-1106620d0631.png)
 
 ## SOLUTION JUSTIFICATION:
 Route follow the minimum distance between locations using breadth-first search.
